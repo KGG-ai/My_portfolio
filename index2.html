@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Komal Rajput | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1 class="glow-text">Komal Rajput</h1>
+    <p class="typewriter">UI/UX Designer | Python & AI Developer</p>
+    <div class="hero-buttons">
+      <a href="#projects" class="btn-glow">View My Work</a>
+      <a href="resume.pdf" download class="btn-outline-glow">Download Resume</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-content">
+      <div class="about-img">
+        <img src="komal.jpg.jpg" alt="Komal Rajput">
+      </div>
+      <div class="about-text">
+        <p>
+          Hi, I’m <span class="highlight">Komal Rajput</span>, a passionate UI/UX designer and Python & AI developer.
+          I specialize in creating user-friendly digital experiences with a perfect mix of creativity and functionality.
+          With experience in Power BI, frontend development, and AI-driven solutions, I aim to craft designs that are
+          both visually appealing and technically robust.  
+          My goal is to combine design thinking with powerful development skills to build impactful projects.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS SECTION -->
+  <section class="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">UI/UX Design</div>
+      <div class="skill-card">HTML / CSS / JavaScript</div>
+      <div class="skill-card">Python Development</div>
+      <div class="skill-card">AI & Machine Learning</div>
+      <div class="skill-card">Data Analysis</div>
+      <div class="skill-card">Power BI / Data Visualization</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
+  <section class="projects" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="project-row">
+      <div class="project-img">
+        <img src="Dashboard.png.png" alt="PCOS Analytics Dashboard">
+      </div>
+      <div class="project-info">
+        <h3>PCOS Analytics Dashboard</h3>
+        <p>Built in Power BI to track and visualize PCOS health data trends with interactive charts and predictive insights.</p>
+      </div>
+    </div>
+
+    <div class="project-row reverse">
+      <div class="project-img">
+        <img src="Desktop - 1.png" alt="NeuroDot Dashboard">
+      </div>
+      <div class="project-info">
+        <h3>NeuroDot Dashboard</h3>
+        <p>UI/UX design and frontend development for a mental health tracking platform with modern, accessible visuals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+      "number": { "value": 150 }, /* More particles */
+      "color": { "value": ["#ff6ec7", "#00f0ff"] },
+      "shape": { "type": "circle" },
+      "opacity": { "value": 0.9 }, /* Stronger glow */
+      "size": { "value": 4 }, /* Bigger particles */
+      "line_linked": { 
+        "enable": true, 
+        "color": "#00f0ff",
+        "opacity": 0.6, /* Thicker lines */
+        "width": 1.5
+      },
+      "move": { "enable": true, "speed": 1.2 } /* Slightly slower for density */
+    }
+  });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+<script>
+  VanillaTilt.init(document.querySelectorAll(".skill-card"), {
+    max: 15, // Max tilt angle
+    speed: 400, // Speed of enter/exit
+    glare: true, // Adds a glare reflection
+    "max-glare": 0.4 // How strong the glare is
+  });
+</script>
+
+</body>
+</html>
