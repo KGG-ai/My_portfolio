@@ -1,0 +1,11 @@
+{
+  "new": {
+    "number": { "value": 40 },
+    "color": { "value": "#f7a1a1" },
+    "shape": { "type": "heart" },
+    "opacity": { "value": 1 },
+    "size": { "value": 4 },
+    "line_linked": { "enable": true, "color": "#f7a1a1" },
+    "move": { "enable": true, "speed": 2 }
+  }
+}

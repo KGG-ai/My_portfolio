@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#new-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #a5c6e2);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: rgb(20, 25, 142);
+    line-height: 1.6;
+}
+
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+header.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px rgb(130, 22, 154);
+    animation: gradientBG 15s ease infinite;
+}
+
+section {
+    background: rgba(180, 142, 142, 0.05);
+    border: 1px solid rgba(0,240,255,0.2);
+    border-radius: 15px;
+    padding:1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgb(138, 188, 192);
+    transition: all 0.3s ease;
+    background-color:#83a1c4;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+section:hover{
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 0 35px rgb(195, 219, 220), 0 0 60px rgb(179, 140, 163);
+    background: linear-gradient(135deg, rgb(101, 55, 84), rgb(156, 77, 165));
+}
+section h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+@keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+section ul {
+    list-style: none;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+section:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 0 35px rgb(195, 219, 220), 0 0 60px rgb(250, 250, 250);
+        background: linear-gradient(135deg, rgb(145, 185, 208), rgb(144, 175, 201));
+}
+.dashboard img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid rgb(16, 132, 141);
+}
+.dashboard img:hover {
+    transform: scale(1.02);
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: 20px;
+}

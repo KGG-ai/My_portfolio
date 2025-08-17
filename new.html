@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PCOS Health Insights Dashboard — Portfolio</title>
+
+<style>
+/* ------- Base + Theme ------- */
+:root{
+  --bg:#0b0b0c;
+  --panel:#151417;
+  --text:#f6f3f7;
+  --muted:#cfc8d2;
+  --brand:#ff7fae;
+  --brand-2:#ffd6e7;
+  --ring:rgba(255,127,174,.35);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(900px 500px at -10% -20%, rgba(255,127,174,.12), rgba(0,0,0,0)),
+    radial-gradient(1100px 600px at 110% 0%, rgba(255,214,231,.10), rgba(0,0,0,0)),
+    var(--bg);
+  font: 500 16px/1.6 system-ui, -apple-system, Segoe UI, Inter, Roboto, sans-serif;
+}
+.container{max-width:1140px;margin:0 auto;padding:0 20px}
+.section{padding:84px 0; scroll-margin-top:90px}
+.kicker{letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-size:.8rem}
+
+/* ------- Sticky Nav ------- */
+nav{
+  position:sticky; top:0; z-index:60;
+  background: rgba(11,11,12,.58);
+  backdrop-filter:saturate(1.2) blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{font-weight:800;letter-spacing:.3px}
+.nav-links{display:flex;gap:16px;flex-wrap:wrap}
+.nav-links a{
+  color:var(--text); text-decoration:none; opacity:.9; padding:8px 12px; border-radius:10px;
+}
+.nav-links a:hover,
+.nav-links a.active{opacity:1; background:rgba(255,255,255,.06)}
+
+/* ------- Buttons ------- */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 18px;border-radius:999px;border:0;cursor:pointer;
+  font-weight:800;text-decoration:none;color:#2b2330;
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  box-shadow:0 10px 28px rgba(255,127,174,.28);
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.btn:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(255,127,174,.38)}
+.btn.secondary{
+  background:#1c1a1f; color:var(--text); box-shadow:none;
+  border:1px solid rgba(255,255,255,.08)
+}
+.btn.secondary:hover{filter:brightness(1.08)}
+
+/* ------- Cards / Panels ------- */
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--panel);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius);
+  box-shadow:0 14px 38px rgba(0,0,0,.35);
+}
+.card-pad{padding:24px}
+.feature:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(255,127,174,.18)}
+.feature{transition:transform .18s ease, box-shadow .18s ease}
+
+/* ------- Grid ------- */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.col-3{grid-column:span 3}
+.col-4{grid-column:span 4}
+.col-6{grid-column:span 6}
+.col-8{grid-column:span 8}
+.col-12{grid-column:span 12}
+@media (max-width:992px){.col-3,.col-4,.col-6,.col-8{grid-column:span 12}}
+
+/* ------- Hero ------- */
+.hero h1{
+  font-weight:900; letter-spacing:-.02em; line-height:1.07; margin:.4rem 0 1rem;
+  font-size: clamp(2.1rem, 3.5vw + 1rem, 3.4rem);
+}
+.hero p{max-width:760px; color:#e8e2ec}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+/* ------- Image gallery ------- */
+.gallery{
+  display:grid; gap:18px;
+  grid-template-columns:repeat(12,1fr);
+}
+.gallery .img{
+  grid-column:span 4; overflow:hidden; border-radius:14px;
+  border:1px solid rgba(255,255,255,.08)
+}
+.gallery .img img{
+  width:100%; display:block; transform:scale(1.02);
+  transition: transform .35s ease, filter .35s ease;
+  filter:saturate(1.02) contrast(1.02)
+}
+.gallery .img:hover img{transform:scale(1.05); filter:saturate(1.1) contrast(1.07)}
+@media (max-width:992px){.gallery .img{grid-column:span 12}}
+
+/* ------- Lists ------- */
+ul.clean{list-style:none;padding-left:0;margin:0}
+ul.clean li{
+  background:#1c1a1f; margin:10px 0; padding:12px 14px; border-radius:12px;
+  border:1px solid rgba(255,255,255,.06)
+}
+
+/* ------- Tech chips ------- */
+.stack{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:10px
+}
+.chip{
+  background:#1c1a1f; border:1px solid rgba(255,255,255,.08);
+  padding:10px 14px; border-radius:999px; color:var(--text); font-weight:600;
+  box-shadow:0 8px 22px rgba(0,0,0,.24)
+}
+
+/* ------- Contact ------- */
+.contact form{display:grid;gap:12px;max-width:560px}
+.input, .textarea{
+  width:100%; background:#1c1a1f; color:var(--text);
+  border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:12px 14px; outline:none
+}
+.input:focus, .textarea:focus{box-shadow:0 0 0 5px var(--ring)}
+.textarea{min-height:120px; resize:vertical}
+
+/* ------- Footer ------- */
+footer{padding:40px 0; color:#beb7c0; text-align:center; border-top:1px solid rgba(255,255,255,.06)}
+
+/* ------- Back-to-top ------- */
+#toTop{
+  position:fixed; right:16px; bottom:16px; z-index:40; opacity:0; pointer-events:none;
+  transition:opacity .2s ease, transform .2s ease;
+}
+#toTop.show{opacity:1; pointer-events:auto}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="container nav-inner">
+    <div class="brand">PCOS Insights</div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#visuals">Visuals</a>
+      <a href="#next">Next Steps</a>
+      <a href="#stack">Tech Stack</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header id="home" class="section hero">
+  <div class="container">
+    <p class="kicker">Data • Women’s Health • BI</p>
+    <h1>PCOS Health Insights Dashboard</h1>
+    <p>An interactive portfolio project turning PCOS-related data (BMI, cycle length, acne, hair growth, skin darkening)
+      into clear visuals that support awareness and better conversations with clinicians.</p>
+    <div class="actions">
+      <a class="btn" href="#visuals">View Project</a>
+      <a class="btn secondary" href="#stack">View Tech Stack</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="grid">
+      <div class="col-8">
+        <div class="card card-pad">
+          <h2 style="margin:0 0 6px">What is the PCOS Dashboard?</h2>
+          <p style="color:#e9e3ed">
+            A compact analytics dashboard that explores correlations between health indicators and PCOS diagnosis.
+            It highlights which BMI bands and age groups show higher diagnosis share and how cycle length varies
+            across segments. The objective is a respectful, accurate, data-driven narrative.
+          </p>
+          <ul class="clean" style="margin-top:12px">
+            <li>• Focus metrics: BMI, cycle length, acne, hair growth, skin darkening</li>
+            <li>• Designed for clarity: dark UI with soft pink accents</li>
+            <li>• Portfolio-ready, responsive, and accessible</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="card card-pad">
+          <h3 style="margin-top:0">Quick Facts</h3>
+          <ul class="clean">
+            <li>• Dataset cleaned & grouped by BMI / Age</li>
+            <li>• Visuals mirror Power BI design</li>
+            <li>• Smooth anchors like <strong>#stack</strong> supported</li>
+          </ul>
+          <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="#next">See Next Steps</a>
+            <a class="btn secondary" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISUALS ===== -->
+<section id="visuals" class="section">
+  <div class="container">
+    <h2 style="margin-top:0;margin-bottom:16px">Dashboard Visuals</h2>
+    <div class="gallery">
+      <figure class="img card feature">
+        <img src="BMIVSPCOS.png.png" alt="BMI vs PCOS" />
+      </figure>
+      <figure class="img card feature">
+        <img src="Cyclelength.png.png" alt="Cycle Length by PCOS/Non-PCOS" />
+      </figure>
+      <figure class="img card feature">
+        <img src="Acne.png.png" alt="PCOS vs Acne" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEXT STEPS ===== -->
+<section id="next" class="section">
+  <div class="container">
+    <div class="grid">
+      <div class="col-12">
+        <div class="card card-pad">
+          <h2 style="margin:0 0 8px">What’s Next</h2>
+          <div class="grid" style="margin-top:6px">
+            <div class="col-4">
+              <div class="card card-pad feature">
+                <h4 style="margin:6px 0 8px;color:var(--brand)">Predictive insights</h4>
+                <p>Prototype a risk indicator using simple models to estimate likelihood of irregular cycles by segment.</p>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card card-pad feature">
+                <h4 style="margin:6px 0 8px;color:var(--brand)">More signals</h4>
+                <p>Add lifestyle features (sleep, steps, nutrition) to see how they influence outcomes alongside BMI.</p>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card card-pad feature">
+                <h4 style="margin:6px 0 8px;color:var(--brand)">Exports & share</h4>
+                <p>One-click image/PDF exports so patients can share visuals with clinicians.</p>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:14px">
+            <a class="btn" href="#contact">Collaborate</a>
+            <a class="btn secondary" href="#visuals">Back to Visuals</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH STACK ===== -->
+<section id="stack" class="section">
+  <div class="container">
+    <div class="card card-pad">
+      <h2 style="margin:0 0 10px">Tech Stack Used</h2>
+      <p style="color:#e9e3ed">Tools and languages that shaped this portfolio build and the dashboard design.</p>
+      <div class="stack">
+        <span class="chip">HTML5</span>
+        <span class="chip">CSS3</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">Power BI (design)</span>
+        <span class="chip">Excel (cleanup)</span>
+        <span class="chip">Pandas (prep)</span>
+      </div>
+      <div style="margin-top:16px">
+        <a class="btn" href="#home">Back to Top</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="grid">
+      <div class="col-6">
+        <div class="card card-pad">
+          <h2 style="margin:0 0 8px">Contact</h2>
+          <p style="color:#e9e3ed">Have feedback, ideas, or want to collaborate? Drop a message.</p>
+          <form id="contactForm" class="contact">
+            <input class="input" type="text" name="name" placeholder="Your Name" required>
+            <input class="input" type="email" name="email" placeholder="Your Email" required>
+            <textarea class="textarea" name="message" placeholder="Your Message" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card card-pad">
+          <h3 style="margin-top:0">Quick Links</h3>
+          <ul class="clean">
+            <li>• <a href="#visuals" style="color:var(--brand)">See Visuals</a></li>
+            <li>• <a href="#next" style="color:var(--brand)">Roadmap / Next Steps</a></li>
+            <li>• <a href="#stack" style="color:var(--brand)">Tech Stack (#stack)</a></li>
+          </ul>
+          <p style="margin-top:10px;color:#e9e3ed">
+            Email: <a href="mailto:komalr635122@gmail.com" style="color:var(--brand)">komalr635122@gmail.com</a>
+            <br>
+            Linkedin : <a href="https://www.linkedin.com/in/komal-rajput-4335892a2/" style="color: var(--brand)">Linkedin</a>
+            <br>
+            GitHub : <a href="https://github.com/KGG-ai" style="color: var(--brand)">GitHub</a>
+            <br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2025 PCOS Health Insights — Built by Komal</div>
+</footer>
+
+<!-- Back to top button -->
+<a id="toTop" class="btn" href="#home" aria-label="Back to top">↑ Top</a>
+
+<script>
+/* Active nav link on scroll */
+const sections = [...document.querySelectorAll('section, header')];
+const links = [...document.querySelectorAll('#navLinks a')];
+const map = Object.fromEntries(links.map(a=>[a.getAttribute('href').replace('#',''), a]));
+
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = e.target.id || 'home';
+      links.forEach(l=>l.classList.remove('active'));
+      map[id]?.classList.add('active');
+    }
+  });
+},{rootMargin:"-50% 0px -50% 0px", threshold:0});
+sections.forEach(s=>obs.observe(s));
+
+/* Show back-to-top button */
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{
+  if (window.scrollY > 500){ toTop.classList.add('show'); }
+  else { toTop.classList.remove('show'); }
+});
+
+/* Alert + email compose on contact form submit */
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thanks! I will get back to you.');
+  window.location.href = `mailto:komalr635122@gmail.com?subject=Portfolio%20Contact&body=Name:%20${encodeURIComponent(this.name.value)}%0AEmail:%20${encodeURIComponent(this.email.value)}%0AMessage:%20${encodeURIComponent(this.message.value)}`;
+  this.reset();
+});
+</script>
+</body>
+</html>
