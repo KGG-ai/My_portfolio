@@ -3,11 +3,9 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>NeuroDot — AI Mental Wellness Dashboard</title>
-
+<title>NeuroDot — UI/UX Case Study</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
@@ -37,7 +35,6 @@ body{
   text-rendering:optimizeLegibility;
 }
 
-
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 .section{padding:64px 0}
 .kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-size:.78rem}
@@ -58,7 +55,6 @@ nav a{color:var(--text);text-decoration:none;font-size:.95rem;opacity:.9}
 nav a:hover{opacity:1}
 .nav-links{display:flex;gap:18px}
 
-
 .hero{padding:90px 0 70px}
 .hero h1{
   font-family:"Space Grotesk",Inter,sans-serif;
@@ -69,7 +65,6 @@ nav a:hover{opacity:1}
   font-size:clamp(2rem, 3.2vw + 1rem, 3.2rem);
 }
 .hero p{color:#c7d2db;max-width:720px}
-
 
 .btn{
   display:inline-flex;align-items:center;gap:10px;
@@ -86,9 +81,7 @@ nav a:hover{opacity:1}
 }
 .btn.secondary:hover{filter:brightness(1.1)}
 
-
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-
 
 .card{
   background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)) , var(--card);
@@ -98,17 +91,13 @@ nav a:hover{opacity:1}
 }
 .card-pad{padding:24px}
 
-
-.grid{
-  display:grid;grid-template-columns:repeat(12,1fr);gap:18px
-}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
 .col-4{grid-column:span 4}
 .col-6{grid-column:span 6}
 .col-12{grid-column:span 12}
 @media (max-width:900px){
   .col-4,.col-6{grid-column:span 12}
 }
-
 
 .feature{display:flex;gap:14px}
 .ico{
@@ -128,10 +117,8 @@ nav a:hover{opacity:1}
 .preview-img:hover{transform:scale(1.015);filter:saturate(1.03)}
 .preview-actions{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 
-
 .list{margin:0;padding-left:18px;color:#cbd5df}
 .list li{margin:6px 0}
-
 
 .badges{display:flex;gap:10px;flex-wrap:wrap}
 .badge{
@@ -139,16 +126,13 @@ nav a:hover{opacity:1}
   padding:8px 12px;border-radius:999px
 }
 
-
 footer{padding:40px 0;color:#93a4b3;border-top:1px solid rgba(255,255,255,.06);text-align:center}
-
 
 .magnet{transition:transform .08s ease}
 .reduce-motion *{transition:none !important;animation:none !important}
 </style>
 </head>
 <body>
-
 
 <nav>
   <div class="container nav-inner">
@@ -158,8 +142,8 @@ footer{padding:40px 0;color:#93a4b3;border-top:1px solid rgba(255,255,255,.06);t
     </div>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#preview">Preview</a>
-      <a href="#stack">Stack</a>
+      <a href="#process">Process</a>
+      <a href="#deliverables">Deliverables</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -167,69 +151,60 @@ footer{padding:40px 0;color:#93a4b3;border-top:1px solid rgba(255,255,255,.06);t
 
 <header class="section hero">
   <div class="container">
-    <p class="kicker" data-aos="fade-up">AI • Neurotech • Well-being</p>
+    <p class="kicker" data-aos="fade-up">UI/UX • Case Study</p>
     <h1 data-aos="fade-up" data-aos-delay="80">
       <span id="type" aria-label="AI Mental Wellness Dashboard">AI Mental Wellness Dashboard</span>
     </h1>
     <p data-aos="fade-up" data-aos-delay="160">
-      NeuroDot helps users track focus and mood trends, visualize EEG-inspired signals,
-      and get actionable insights powered by lightweight ML models — all in a clear, calm interface.
+      NeuroDot is a UI/UX case study that focuses on designing a clean, minimal mental wellness dashboard 
+      to help users track mood trends and EEG-inspired signals. The goal: an interface that feels calm, intuitive, and accessible.
     </p>
     <div class="hero-actions" data-aos="fade-up" data-aos-delay="240">
-      <a class="btn magnet" href="https://github.com/KGG-ai/Portfolio" target="_blank" rel="noopener">View On GitHub</a>
-      <a class="btn secondary" href="#about">Learn more</a>
+      <a class="btn magnet" href="files/NeuroDot_CaseStudy.pdf" target="_blank">View Case Study (PDF)</a>
+      <a class="btn secondary" href="https://www.figma.com/proto/your-neurodot-prototype-link" target="_blank">View Prototype</a>
     </div>
   </div>
 </header>
 
-
 <section id="about" class="section">
   <div class="container">
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0">About the Project</h2>
+      <p style="color:#cbd5df">
+        The NeuroDot project emphasizes user-centered design. It addresses the challenge of making mental health tracking approachable 
+        by using soft colors, EEG-inspired visuals, and simplified navigation for a stress-free digital experience.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="section">
+  <div class="container">
     <div class="grid">
       <div class="col-6">
         <div class="card card-pad" data-aos="fade-up">
-          <h2 style="margin-top:0">What is NeuroDot?</h2>
-          <p style="color:#cbd5df">
-            A focused dashboard for mental wellness — built to monitor daily focus score, mood patterns,
-            and recommendations, with a friendly UI that avoids noise and keeps signals clear.
-          </p>
+          <h2 style="margin-top:0">Design Process</h2>
           <ul class="list">
-            <li>Clean, blue-toned UI for clarity</li>
-            <li>EEG-inspired wave visualizations</li>
-            <li>Lightweight mood prediction pipeline</li>
-            <li>Accessible, keyboard-navigable controls</li>
+            <li><strong>Research:</strong> Studied existing mental health apps and identified UX pain points.</li>
+            <li><strong>Wireframes:</strong> Built low-fidelity sketches to map user flows.</li>
+            <li><strong>Prototyping:</strong> Designed interactive prototypes in Figma.</li>
+            <li><strong>UI Design:</strong> Used calming blue tones, generous spacing, and clean typography.</li>
           </ul>
         </div>
       </div>
-
       <div class="col-6">
-        <div class="grid">
-          <div class="col-12">
-            <div class="card card-pad feature" data-aos="fade-left">
-              <div class="ico">AI</div>
-              <div>
-                <strong>Predictions</strong><br/>
-                Mood & focus estimations using simple, interpretable features.
-              </div>
-            </div>
+        <div class="card card-pad feature" data-aos="fade-left">
+          <div class="ico">UX</div>
+          <div>
+            <strong>Accessible Design</strong><br/>
+            Focused on clear visuals, minimal steps, and inclusive interactions.
           </div>
-          <div class="col-12">
-            <div class="card card-pad feature" data-aos="fade-left" data-aos-delay="120">
-              <div class="ico">UX</div>
-              <div>
-                <strong>Calm interface</strong><br/>
-                Minimal cognitive load with readable typography and spacing.
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="card card-pad feature" data-aos="fade-left" data-aos-delay="220">
-              <div class="ico">DS</div>
-              <div>
-                <strong>Data visuals</strong><br/>
-                Trend cards, micro-charts, and clear states for quick scans.
-              </div>
-            </div>
+        </div>
+        <div class="card card-pad feature" data-aos="fade-left" style="margin-top:16px">
+          <div class="ico">UI</div>
+          <div>
+            <strong>Calm Interface</strong><br/>
+            Reduced clutter, optimized readability, and added micro-interactions.
           </div>
         </div>
       </div>
@@ -237,60 +212,23 @@ footer{padding:40px 0;color:#93a4b3;border-top:1px solid rgba(255,255,255,.06);t
   </div>
 </section>
 
-
-<section id="preview" class="section">
+<section id="deliverables" class="section">
   <div class="container">
     <div class="card card-pad" data-aos="zoom-in">
-      <h2 style="margin-top:0">Dashboard Preview</h2>
-      <div class="preview-wrap">
-        <img class="preview-img magnet" src="Desktop - 1.png" alt="NeuroDot Dashboard mockup">
-        <div class="preview-actions">
-          <a class="btn magnet" href="https://github.com/KGG-ai/Portfolio" target="_blank" rel="noopener">View On GitHub</a>
-          <a class="btn secondary" href="#contact">Get in touch</a>
-        </div>
+      <h2 style="margin-top:0">Deliverables</h2>
+      <div class="preview-actions">
+        <a class="btn magnet" href="files/NeuroDot_CaseStudy.pdf" target="_blank">📂 Download Case Study PDF</a>
+        <a class="btn secondary" href="https://www.figma.com/proto/your-neurodot-prototype-link" target="_blank">🖥️ View Prototype on Figma</a>
       </div>
     </div>
   </div>
 </section>
-
-
-<section class="section">
-  <div class="container">
-    <div class="grid">
-      <div class="col-6">
-        <div class="card card-pad" data-aos="fade-up">
-          <h2 style="margin-top:0">Next Steps</h2>
-          <ul class="list">
-            <li>Convert Figma to responsive components</li>
-            <li>Animate wave graph (Canvas/SVG)</li>
-            <li>Hook prediction API for live score</li>
-            <li>Write tests & a11y checks</li>
-          </ul>
-        </div>
-      </div>
-      <div id="stack" class="col-6">
-        <div class="card card-pad" data-aos="fade-up" data-aos-delay="120">
-          <h2 style="margin-top:0">Tech Stack</h2>
-          <div class="badges" aria-label="Tech badges">
-            <span class="badge">Figma</span>
-            <span class="badge">HTML</span>
-            <span class="badge">CSS</span>
-            <span class="badge">JavaScript</span>
-            <span class="badge">React.js</span>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 <section id="contact" class="section">
   <div class="container">
     <div class="card card-pad" data-aos="fade-up">
       <h2 style="margin-top:0">Contact</h2>
-      <p style="color:#cbd5df;margin-top:0">Collaborations, internships, or feedback — say hi.</p>
+      <p style="color:#cbd5df;margin-top:0">Interested in collaborating on design projects or internships? Let’s connect.</p>
       <form class="grid" onsubmit="event.preventDefault(); alert('Thanks! I’ll get back to you.');">
         <div class="col-6">
           <label for="name">Name</label><br/>
@@ -313,15 +251,14 @@ footer{padding:40px 0;color:#93a4b3;border-top:1px solid rgba(255,255,255,.06);t
 </section>
 
 <footer>
-  <div class="container">© 2025 NeuroDot</div>
+  <div class="container">© 2025 NeuroDot UI/UX Case Study</div>
 </footer>
-
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({ duration: 800, once: true });
 
-
+// Input styling
 document.querySelectorAll('.input').forEach(el=>{
   Object.assign(el.style,{
     width:'100%', padding:'10px 12px', borderRadius:'10px',
@@ -332,13 +269,13 @@ document.querySelectorAll('.input').forEach(el=>{
   el.addEventListener('blur',()=> el.style.boxShadow='none');
 });
 
-
+// Typing effect
 (function typeHero(){
   const el = document.getElementById('type');
   const phrases = [
     'AI Mental Wellness Dashboard',
-    'Focus & Mood Insights',
-    'Clear Signals. Calm UI.'
+    'UI/UX Case Study',
+    'Calm & Intuitive Design'
   ];
   let p=0,i=0,deleting=false;
   function tick(){
@@ -354,7 +291,7 @@ document.querySelectorAll('.input').forEach(el=>{
   tick();
 })();
 
-
+// Magnet buttons
 const magnets = document.querySelectorAll('.magnet');
 magnets.forEach(btn=>{
   const strength = 14;
@@ -367,11 +304,9 @@ magnets.forEach(btn=>{
   btn.addEventListener('mouseleave', ()=> btn.style.transform='translate(0,0)');
 });
 
-
 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.body.classList.add('reduce-motion');
 }
 </script>
 </body>
 </html>
-
