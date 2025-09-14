@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>DashJob — Job Seeker Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#0a0f1a;
+  --card:#131c2b;
+  --muted:#7f8fa4;
+  --text:#e4e8f0;
+  --primary:#1e40af;   /* deep blue */
+  --primary-2:#3b82f6; /* cyan-blue */
+  --accent:#06b6d4;    /* cyan accent */
+  --ring: rgba(59,130,246,.4);
+  --radius:14px;
+  --shadow:0 12px 32px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body {
+  margin:0;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  line-height:1.6;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+#bgCanvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.container {max-width:1100px; margin:0 auto; padding:0 20px}
+.section {padding:64px 0}
+.kicker {letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-size:.8rem}
+
+nav {
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(10px);
+  background: rgba(10,15,26,.7);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.nav-inner {display:flex; align-items:center; justify-content:space-between; padding:14px 20px}
+.brand {display:flex; gap:10px; align-items:center; font-weight:700}
+.brand-dot {
+  width:10px; height:10px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #fff, var(--primary) 40%, var(--primary-2) 100%);
+  box-shadow:0 0 16px rgba(59,130,246,.6);
+}
+.nav-links {display:flex; gap:18px}
+nav a {color:var(--text); text-decoration:none; font-size:.95rem; opacity:.85}
+nav a:hover {opacity:1}
+
+.hero {
+  padding:90px 0 70px;
+  position: relative;
+  overflow: hidden;
+  z-index:1;
+}
+.hero::before {
+  content:"";
+  position:absolute; top:-50%; left:-50%; width:200%; height:200%;
+  background: radial-gradient(circle at 30% 30%, rgba(59,130,246,.08), transparent 70%);
+  animation: rotate 30s linear infinite;
+  z-index:-1;
+}
+@keyframes rotate {0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+.hero h1 {
+  font-family:"Space Grotesk",sans-serif;
+  font-weight:700;
+  letter-spacing:-.02em;
+  font-size:clamp(2rem, 3vw + 1rem, 3.2rem);
+  line-height:1.1;
+  margin:12px 0 16px;
+}
+.hero p {color:#cbd5e1; max-width:720px}
+.hero-actions {display:flex; gap:14px; flex-wrap:wrap; margin-top:20px}
+
+.btn {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:12px 18px; border-radius:10px;
+  color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  font-weight:600; text-decoration:none; cursor:pointer;
+  box-shadow:0 8px 24px rgba(59,130,246,.25);
+  transition:.25s;
+}
+.btn:hover {transform:translateY(-2px); box-shadow:0 12px 28px rgba(59,130,246,.35)}
+.btn.secondary {
+  background:#1b263b; border:1px solid rgba(255,255,255,.08); color:var(--text);
+  box-shadow:none;
+}
+.btn.secondary:hover {filter:brightness(1.1)}
+
+.card {
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)), var(--card);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.card-pad {padding:24px}
+
+.grid {display:grid; grid-template-columns:repeat(12,1fr); gap:18px}
+.col-4{grid-column:span 4}
+.col-6{grid-column:span 6}
+.col-12{grid-column:span 12}
+@media (max-width:900px){.col-4,.col-6{grid-column:span 12}}
+
+.feature {display:flex; gap:14px}
+.ico {
+  width:40px; height:40px; border-radius:10px; flex:none;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  font-weight:700; color:#fff;
+  box-shadow:0 8px 22px rgba(59,130,246,.25);
+}
+
+.preview-wrap {text-align:center}
+.preview-img {
+  max-width:820px; width:100%;
+  border-radius:12px; border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+  transition:.25s;
+}
+.preview-img:hover {transform:scale(1.015); filter:saturate(1.05)}
+.preview-actions {margin-top:16px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+.list {margin:0; padding-left:18px; color:#d1d5db}
+.list li {margin:6px 0}
+
+.badges {display:flex; gap:10px; flex-wrap:wrap}
+.badge {
+  font-size:.85rem; background:#1f2a42; border:1px solid rgba(255,255,255,.08);
+  padding:8px 12px; border-radius:999px; color:#dbeafe;
+}
+
+footer {padding:40px 0; text-align:center; color:#9ca3af; border-top:1px solid rgba(255,255,255,.06)}
+
+.input {
+  width:100%; padding:10px 12px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.08); background:#111d2b;
+  color:var(--text); outline:none;
+}
+.input:focus { box-shadow: 0 0 0 4px var(--ring); }
+
+</style>
+</head>
+<body>
+
+<!-- Particle background canvas -->
+<canvas id="bgCanvas"></canvas>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="brand"><span class="brand-dot"></span> DashJob</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#preview">Preview</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="section hero">
+  <div class="container">
+    <p class="kicker" data-aos="fade-up">Career • Productivity • Tracking</p>
+    <h1 id="type" data-aos="fade-up" data-aos-delay="80">Job Seeker Dashboard</h1>
+    <p data-aos="fade-up" data-aos-delay="160">
+      DashJob simplifies job search by letting seekers track applications, manage statuses,
+      and stay motivated with a minimal, intuitive dashboard experience.
+    </p>
+    <div class="hero-actions" data-aos="fade-up" data-aos-delay="240">
+      <a class="btn" href="DashJob.pdf" target="_blank">Case Study (PDF)</a>
+      <a class="btn secondary" href="https://www.figma.com/proto/x1AHYimQXQESoMWLDLi0if/Untitled?node-id=3-2&p=f&t=z0As8JBXtg5oKpbm-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A2" target="_blank">View Prototype</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="grid">
+      <div class="col-6">
+        <div class="card card-pad" data-aos="fade-up">
+          <h2>About DashJob</h2>
+          <p>A web dashboard tailored for job seekers to manage and visualize their career progress in one place.</p>
+          <ul class="list">
+            <li>Track applications across stages</li>
+            <li>Simple, card-based UI</li>
+            <li>Responsive for desktop & mobile</li>
+            <li>Quick filters and search</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card card-pad feature" data-aos="fade-left">
+          <div class="ico">UX</div>
+          <div><strong>Clarity First</strong><br/>Organized data to reduce user stress.</div>
+        </div>
+        <div class="card card-pad feature" data-aos="fade-left" data-aos-delay="120">
+          <div class="ico">UI</div>
+          <div><strong>Responsive Design</strong><br/>Mobile-friendly layout using flexible grids.</div>
+        </div>
+        <div class="card card-pad feature" data-aos="fade-left" data-aos-delay="220">
+          <div class="ico">JS</div>
+          <div><strong>Interactive</strong><br/>Hover effects and quick action cards.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="section">
+  <div class="container">
+    <div class="card card-pad" data-aos="fade-up">
+      <h2>Design Process</h2>
+      <p><strong>Research:</strong> Identified challenges in existing platforms like clutter and lack of visual progress tracking.</p>
+      <p><strong>Wireframes:</strong> Created low-fi sketches of application cards and filters.</p>
+      <p><strong>Prototype:</strong> Designed in Figma with modern color palette and clear hierarchy.</p>
+    </div>
+  </div>
+</section>
+
+<section id="preview" class="section">
+  <div class="container">
+    <div class="card card-pad" data-aos="zoom-in">
+      <h2>Dashboard Preview</h2>
+      <div class="preview-wrap">
+        <img class="preview-img" src="images/dashjob-mockup.png" alt="DashJob Dashboard mockup">
+        <div class="preview-actions">
+          <a class="btn" href="files/DashJob_CaseStudy.pdf" target="_blank">📂 Case Study PDF</a>
+          <a class="btn secondary" href="https://www.figma.com/proto/your-dashjob-link" target="_blank">🖥️ Prototype</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid">
+      <div class="col-6">
+        <div class="card card-pad" data-aos="fade-up">
+          <h2>Next Steps</h2>
+          <ul class="list">
+            <li>Add calendar integration</li>
+            <li>Enable export to Excel/CSV</li>
+            <li>Gamify milestones for motivation</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card card-pad" data-aos="fade-up" data-aos-delay="120">
+          <h2>Tech Stack</h2>
+          <div class="badges">
+            <span class="badge">Figma</span>
+            <span class="badge">HTML</span>
+            <span class="badge">CSS</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">React.js</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="card card-pad" data-aos="fade-up">
+      <h2>Contact</h2>
+      <p style="color:#d1d5db">Reach out for collaborations or feedback.</p>
+      <form class="grid" onsubmit="event.preventDefault(); alert('Thanks! I’ll get back to you.');">
+        <div class="col-6">
+          <label>Name</label><br/>
+          <input class="input" required>
+        </div>
+        <div class="col-6">
+          <label>Email</label><br/>
+          <input type="email" class="input" required>
+        </div>
+        <div class="col-12" style="margin-top:10px">
+          <label>Message</label><br/>
+          <textarea rows="4" class="input" required></textarea>
+        </div>
+        <div class="col-12" style="margin-top:14px">
+          <button class="btn" type="submit">Send</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2025 DashJob</div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 800, once: true });
+
+// Typewriter effect
+(function(){
+  const el = document.getElementById('type');
+  const phrases = ["Job Seeker Dashboard","Track. Apply. Succeed.","Your Career, Organized."];
+  let p=0,i=0,deleting=false;
+  function tick(){
+    const full=phrases[p];
+    i+=deleting?-1:1;
+    el.textContent=full.slice(0,i);
+    if(!deleting && i===full.length){ setTimeout(()=>deleting=true,1200);}
+    else if(deleting && i===0){ deleting=false; p=(p+1)%phrases.length;}
+    setTimeout(tick,deleting?40:70);
+  }
+  tick();
+})();
+
+// Particle background
+const canvas = document.getElementById('bgCanvas');
+const ctx = canvas.getContext('2d');
+let w,h;
+function resize() { w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+
+const particles=[];
+for(let i=0;i<100;i++){
+  particles.push({
+    x: Math.random()*w,
+    y: Math.random()*h,
+    r: Math.random()*3+1,
+    dx: (Math.random()-0.5)*0.3,
+    dy: (Math.random()-0.5)*0.3,
+    color: `rgba(59,130,246,${Math.random()*0.4+0.1})`
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,w,h);
+  for(let p of particles){
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=p.color;
+    ctx.fill();
+    p.x+=p.dx; p.y+=p.dy;
+    if(p.x>w)p.x=0;if(p.x<0)p.x=w;
+    if(p.y>h)p.y=0;if(p.y<0)p.y=h;
+  }
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
