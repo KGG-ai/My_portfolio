@@ -15,7 +15,7 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <h1 class="glow-text">Komal Rajput</h1>
-    <p class="typewriter">UI/UX Designer | Python & AI Developer</p>
+    <p class="typewriter">UI/UX Designer</p>
     <div class="hero-buttons">
       <a href="#projects" class="btn-glow">View My Work</a>
       <a href="Resume_komal.pdf" download class="btn-outline-glow">Download Resume</a>
@@ -48,7 +48,7 @@
       <div class="skill-card">HTML / CSS / JavaScript</div>
       <div class="skill-card">Python , Flask</div>
       <div class="skill-card">Machine Learning</div>
-      <div class="skill-card">React.js</React></div>
+      <div class="skill-card">React.js</div>
       <div class="skill-card">Power BI , MS Excel , Tableau</div>
     </div>
   </section>
@@ -56,29 +56,12 @@
   <!-- PROJECTS SECTION -->
   <section class="projects" id="projects">
     <h2 class="section-title">Projects</h2>
+
     <div class="project-row">
       <div class="project-info">
         <h3>PCOS Analytics Dashboard</h3>
         <p>Built in Power BI to track and visualize PCOS health data trends with interactive charts and predictive insights.</p>
-        <a href = "new.html" class = "view-project-btn" target="_blank">View Project</a>
-        <style>
-          .view-project-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #5B6CFF, #00D4FF);
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            font-family: 'Poppins', sans-serif;
-        }
-
-          .view-project-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 212, 255, 0.3);
-        }
-</style>
+        <a href="new.html" class="view-project-btn" target="_blank">View Project</a>
       </div>
     </div>
 
@@ -86,55 +69,21 @@
       <div class="project-info">
         <h3>NeuroDot Dashboard</h3>
         <p>UI/UX design and frontend development for a mental health tracking platform with modern, accessible visuals.</p>
-        <a href = "Neuro.html" class="view-project-btn" target="_blank">View Project</a>
-        <style>
-          .view-project-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #5B6CFF, #00D4FF);
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            font-family: 'Poppins', sans-serif;
-        }
-
-          .view-project-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 212, 255, 0.3);
-        }
-</style>
+        <a href="Neuro.html" class="view-project-btn" target="_blank">View Project</a>
       </div>
     </div>
-     <div class="project-row">
+
+    <div class="project-row">
       <div class="project-info">
-        <h3>Veda-AI Assistant</h3>
+        <h3>DashJob Platform</h3>
         <p>
-          An AI-powered chatbot with a modern futuristic UI.  
-          Built using HTML, CSS, and JavaScript, optimized for responsive usage.
+          A job search and career management platform designed to help users discover opportunities, track applications, 
+          and connect with recruiters. Built with React.js, PostgreSQL, and a modern UI/UX approach for seamless user experience.
         </p>
-        <a href="veda.html" class="view-project-btn" target="_blank">View Project</a>
-        <style>
-         .view-project-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #5B6CFF, #00D4FF);
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            font-family: 'Poppins', sans-serif;
-        }
-
-          .view-project-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0, 212, 255, 0.3);
-        }
-        </style>
+        <a href="dash.html" class="view-project-btn" target="_blank">View Project</a>
       </div>
     </div>
+
   </section>
 
   <!-- CONTACT SECTION -->
@@ -153,30 +102,30 @@
   <script>
     particlesJS("particles-js", {
       "particles": {
-      "number": { "value": 150 }, /* More particles */
-      "color": { "value": ["#ff6ec7", "#00f0ff"] },
-      "shape": { "type": "circle" },
-      "opacity": { "value": 0.9 }, /* Stronger glow */
-      "size": { "value": 4 }, /* Bigger particles */
-      "line_linked": { 
-        "enable": true, 
-        "color": "#00f0ff",
-        "opacity": 0.6, /* Thicker lines */
-        "width": 1.5
-      },
-      "move": { "enable": true, "speed": 1.2 } /* Slightly slower for density */
-    }
-  });
+        "number": { "value": 150 },
+        "color": { "value": ["#ff6ec7", "#00f0ff"] },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.9 },
+        "size": { "value": 4 },
+        "line_linked": { 
+          "enable": true, 
+          "color": "#00f0ff",
+          "opacity": 0.6,
+          "width": 1.5
+        },
+        "move": { "enable": true, "speed": 1.2 }
+      }
+    });
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-<script>
-  VanillaTilt.init(document.querySelectorAll(".skill-card"), {
-    max: 15, // Max tilt angle
-    speed: 400, // Speed of enter/exit
-    glare: true, // Adds a glare reflection
-    "max-glare": 0.4 // How strong the glare is
-  });
-</script>
+  <script>
+    VanillaTilt.init(document.querySelectorAll(".skill-card"), {
+      max: 15,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.4
+    });
+  </script>
 
 </body>
 </html>
