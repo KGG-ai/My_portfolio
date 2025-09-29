@@ -9,51 +9,51 @@
 
 <style>
 :root{
-  --bg:#0a0a0a;
-  --card:#141414;
-  --muted:#a0a0a0;
-  --text:#f2f2f2;
-  --primary:#d4af37;
-  --primary-2:#b22222;
+  --bg:#332e29;  /* antique warm dark */
+  --card:#443f37;
+  --muted:#b0a38f;
+  --text:#f5f0e8;
+  --primary:#948862;
+  --primary-2:#694747;
   --accent:#d4af37;
-  --ring: rgba(212,175,55,.45);
+  --ring: rgba(83, 78, 62, 0.35);
   --radius:14px;
-  --shadow:0 10px 30px rgba(0,0,0,.45);
+  --shadow:0 10px 30px rgba(0,0,0,.35);
 }
-*{box-sizing:border-box}
-html,body{height:100%}
+*{box-sizing:border-box;}
+html,body{height:100%;}
 body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-  background: radial-gradient(1000px 500px at 20% -10%, rgba(212,175,55,.12), rgba(0,0,0,0)),
-              radial-gradient(1200px 600px at 110% 20%, rgba(178,34,34,.12), rgba(0,0,0,0)),
+  background: radial-gradient(1000px 500px at 20% -10%, rgba(212,175,55,.08), rgba(0,0,0,0)),
+              radial-gradient(1200px 600px at 110% 20%, rgba(178,34,34,.08), rgba(0,0,0,0)),
               var(--bg);
   color:var(--text);
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
 }
 
-.container{max-width:1150px;margin:0 auto;padding:0 20px}
-.section{padding:70px 0}
-.kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-size:.8rem}
+.container{max-width:1150px;margin:0 auto;padding:0 20px;}
+.section{padding:70px 0;}
+.kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-size:.8rem;}
 
 nav{
   position:sticky; top:0; z-index:50;
-  backdrop-filter: blur(8px);
-  background: rgba(10,10,10,.7);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  backdrop-filter: blur(6px);
+  background: rgba(51, 44, 32, 0.85);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
-.brand{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--primary)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
+.brand{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--primary);}
 .brand-dot{width:12px;height:12px;border-radius:50%;
   background: radial-gradient(circle at 30% 30%, #fff, var(--primary) 50%, var(--primary-2) 100%);
   box-shadow:0 0 18px rgba(212,175,55,.6);
 }
-nav a{color:var(--text);text-decoration:none;font-size:.95rem;opacity:.85}
-nav a:hover{opacity:1;color:var(--primary)}
-.nav-links{display:flex;gap:18px}
+nav a{color:var(--text);text-decoration:none;font-size:.95rem;opacity:.85;}
+nav a:hover{opacity:1;color:var(--primary);}
+.nav-links{display:flex;gap:18px;}
 
-.hero{padding:100px 0 80px;text-align:center}
+.hero{padding:100px 0 80px;text-align:center;}
 .hero h1{
   font-family:"Space Grotesk",Inter,sans-serif;
   font-weight:700;
@@ -62,7 +62,7 @@ nav a:hover{opacity:1;color:var(--primary)}
   font-size:clamp(2.2rem, 3.2vw + 1rem, 3.5rem);
   color:var(--primary);
 }
-.hero p{color:#ccc;max-width:720px;margin:0 auto}
+.hero p{color:#ddd;max-width:720px;margin:0 auto;}
 
 .btn{
   display:inline-flex;align-items:center;gap:10px;
@@ -74,19 +74,24 @@ nav a:hover{opacity:1;color:var(--primary)}
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,175,55,.35);}
 .btn.secondary{
-  background:#1c1c1c;color:var(--text);border:1px solid rgba(255,255,255,.08);
+  background:#2b2318;color:var(--text);border:1px solid rgba(255,255,255,.08);
 }
-.btn.secondary:hover{filter:brightness(1.1)}
+.btn.secondary:hover{filter:brightness(1.1);}
 
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px;}
 
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)) , var(--card);
-  border:1px solid rgba(255,255,255,.06);
+  background:linear-gradient(180deg, rgba(245,240,232,.03), rgba(245,240,232,.01)) , var(--card);
+  border:1px solid rgba(255,255,255,.05);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
-.card-pad{padding:24px}
+.card:hover{
+  transform: translateY(-5px);
+  box-shadow:0 14px 35px rgba(212,175,55,.35);
+}
+.card-pad{padding:24px;}
 
 .grid{
   display:flex;
@@ -107,11 +112,15 @@ nav a:hover{opacity:1;color:var(--primary)}
   transform:scale(1.05);
   box-shadow:0 12px 30px rgba(212,175,55,.35);
 }
+.grid-banner img{
+  width:100%; max-width:900px; display:block; margin:0 auto;
+  box-shadow:0 12px 35px rgba(212,175,55,.25);
+}
 
-footer{padding:40px 0;color:#aaa;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.9rem}
+footer{padding:40px 0;color:#aaa;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.9rem;}
 
 input,textarea{
-  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:#141414; color:var(--text); outline:none; margin-bottom:10px;
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:#2b2318; color:var(--text); outline:none; margin-bottom:10px;
 }
 input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 </style>
@@ -126,6 +135,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
     </div>
     <div class="nav-links">
       <a href="#about">About</a>
+      <a href="#process">Process</a>
       <a href="#deliverables">Deliverables</a>
       <a href="#contact">Contact</a>
     </div>
@@ -137,8 +147,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
     <p class="kicker" data-aos="fade-up">Brand Identity • Case Study</p>
     <h1 id="type">Legacy Works</h1>
     <p data-aos="fade-up" data-aos-delay="160">
-      A conceptual branding project for an established chain of antique furniture stores, 
-      blending timeless heritage with modern design principles.
+      A conceptual branding project for an antique furniture chain, blending timeless heritage with modern design.
     </p>
     <div class="hero-actions" data-aos="fade-up" data-aos-delay="240">
       <a class="btn magnet" href="LegacyWorks.pdf" target="_blank">View Case Study (PDF)</a>
@@ -152,9 +161,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
     <div class="card card-pad" data-aos="fade-up">
       <h2 style="margin-top:0;color:var(--primary)">About the Project</h2>
       <p style="color:#ddd">
-        Legacy Works was designed as a complete branding package to represent an antique furniture chain. 
-        The goal was to merge the elegance of traditional design with the sleekness of modern branding. 
-        Deliverables include logos, business cards, letterhead, banner, and social media kit.
+        Legacy Works is a complete branding package for an antique furniture chain. The goal was to merge traditional elegance with modern design. Deliverables include logos, business cards, letterhead, banner, and social media mockups.
       </p>
     </div>
   </div>
@@ -163,17 +170,12 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 <section id="process" class="section">
   <div class="container">
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Process</h2>
-      <p style="color:#ddd">
-        The design process followed a structured approach to ensure timeless branding that resonates with Legacy Works’ audience:
-      </p>
-      <ul style="color:#ccc; margin-left:20px;">
-        <li>Research & Discovery: Studied the brand history, competitors, and target audience.</li>
-        <li>Concept Development: Created mood boards, sketches, and initial logo ideas.</li>
-        <li>Design Refinement: Finalized logo, color palette, typography, and visual elements.</li>
-        <li>Collateral Design: Designed business cards, letterhead, banners, and social media mockups.</li>
-        <li>Review & Feedback: Iterative feedback with stakeholders to refine and finalize all assets.</li>
-        <li>Delivery: Provided a complete branding package ready for implementation across all platforms.</li>
+      <h2 style="margin-top:0;color:var(--primary)">Design Process</h2>
+      <ul style="color:#ddd; padding-left:20px; margin-top:12px;">
+        <li><strong>Research:</strong> Competitor & antique brand analysis.</li>
+        <li><strong>Concept Ideation:</strong> Logo, typography, color palette concepts.</li>
+        <li><strong>Wireframing:</strong> Layouts for cards, letterhead, social media posts.</li>
+        <li><strong>Final Design:</strong> Completed logo, banner, business cards, letterhead, and social media mockups.</li>
       </ul>
     </div>
   </div>
@@ -181,40 +183,64 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 
 <section id="deliverables" class="section">
   <div class="container">
-    <div class="card card-pad" data-aos="zoom-in">
-      <h2 style="margin-top:0;color:var(--primary)">Deliverables</h2>
 
-      <h3 style="color:#d4af37; margin-top:20px;">Logo</h3>
+    <!-- Logos -->
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">Logos</h2>
       <div class="grid">
         <img src="3-D.png" alt="3D Logo">
         <img src="2-D.png" alt="2D Logo">
       </div>
+    </div>
 
-      <h3 style="color:#d4af37; margin-top:20px;">Business Cards</h3>
+    <!-- Space -->
+    <div style="height:40px"></div>
+
+    <!-- Business Cards -->
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">Business Cards</h2>
       <div class="grid">
         <img src="Business_front.png" alt="Business Card Front">
         <img src="Business_back.png" alt="Business Card Back">
       </div>
+    </div>
 
-      <h3 style="color:#d4af37; margin-top:20px;">Letterhead Design</h3>
+    <!-- Space -->
+    <div style="height:40px"></div>
+
+    <!-- Letterhead -->
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">Letterhead</h2>
       <div class="grid">
         <img src="Letter_head.png" alt="Letterhead">
       </div>
-
-      <h3 style="color:#d4af37; margin-top:20px;">Social Media Mockups</h3>
-      <div class="grid">
-        <img src="Instagram_Post.png" alt="Instagram Post">
-        <img src="Instagram_Profile.png" alt="Instagram Profile">
-      </div>
-
-      <h3 style="color:#d4af37; margin-top:20px;">Banner</h3>
-      <div class="grid">
-        <img src="Banner.png" alt="Banner">
-      </div>
-
     </div>
+
+    <!-- Space -->
+    <div style="height:40px"></div>
+
+    <!-- Social Media -->
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">Social Media Mockups</h2>
+      <div class="grid">
+        <img src="Instagram_post.png" alt="Instagram Post">
+        <img src="Instagram_profile.png" alt="Instagram Profile">
+      </div>
+    </div>
+
+    <!-- Space -->
+    <div style="height:40px"></div>
+
+    <!-- Banner -->
+    <div class="card card-pad grid-banner" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">Banner</h2>
+      <img src="Banner.png" alt="Banner">
+    </div>
+
   </div>
 </section>
+
+
 
 <section id="contact" class="section">
   <div class="container">
