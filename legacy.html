@@ -11,10 +11,10 @@
 :root{
   --bg:#231b17;  /* antique warm dark */
   --card:#6d6760;
-  --muted:#746d65;
-  --text:#f7f5f2;
-  --primary:#837e71;
-  --primary-2:#402a2a;
+  --muted:#a58f76;
+  --text:#ffffff;
+  --primary:#807b6d;
+  --primary-2:#5a4141;
   --accent:#2e2d2b;
   --ring: rgba(68, 66, 61, 0.788);
   --radius:14px;
@@ -40,7 +40,7 @@ body{
 nav{
   position:sticky; top:0; z-index:50;
   backdrop-filter: blur(6px);
-  background: rgb(76, 46, 36);
+  background: rgb(107, 66, 53);
   border-bottom:1px solid rgba(88, 69, 69, 0.06);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
@@ -67,11 +67,11 @@ nav a:hover{opacity:1;color:var(--primary);}
 .btn{
   display:inline-flex;align-items:center;gap:10px;
   padding:12px 20px;border-radius:10px;
-  color:#070707;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#311b1b;background:linear-gradient(135deg,var(--primary),var(--primary-2));
   font-weight:600;text-decoration:none;cursor:pointer;
   box-shadow:0 8px 24px rgba(75, 69, 49, 0.25);
   transition:transform .2s ease, box-shadow .2s ease,filter .2s ease;
-  border:3px solid  rgb(203, 195, 195);
+  border:3px solid  rgb(204, 203, 200);
 }
 .btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(69, 62, 38, 0.759);}
 .btn:focus-visible{outline:3px solid var(--ring);outline-offset:4px}
@@ -124,9 +124,9 @@ nav a:hover{opacity:1;color:var(--primary);}
 footer{padding:40px 0;color:#aaa;border-top:1px solid rgb(66, 48, 48);text-align:center;font-size:.9rem;}
 
 input,textarea{
-  width:100%; padding:10px 12px; border-radius:10px; border: 2px solid rgba(63, 31, 31, 0.851); background:#3b2b1fa0; color:var(--text); outline:none; margin-bottom:10px;
+  width:100%; padding:10px 12px; border-radius:10px; border: 2px solid rgba(63, 31, 31, 0.851); background:#3b2b1fa0; color:#ddd;outline:none; margin-bottom:10px;
 }
-input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
+input:focus,textarea:focus{box-shadow:rgb(53, 38, 32) 4px var(--ring);}
 </style>
 </head>
 <body>
@@ -163,8 +163,8 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 <section id="about" class="section">
   <div class="container">
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">About the Project</h2>
-      <p style="color:#ddd">
+      <h2 style="margin-top:0;color:#c8b49d">About the Project</h2>
+      <p style="color:#ffffff">
         Legacy Works is a complete branding package for an antique furniture chain. The goal was to merge traditional elegance with modern design. Deliverables include logos, business cards, letterhead, banner, and social media mockups.
       </p>
     </div>
@@ -174,8 +174,8 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 <section id="process" class="section">
   <div class="container">
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Design Process</h2>
-      <ul style="color:#ddd; padding-left:20px; margin-top:12px;">
+      <h2 style="margin-top:0;color:#c8b49d">Design Process</h2>
+      <ul style="color:#ffffff; padding-left:20px; margin-top:12px;">
         <li><strong>Research:</strong> Competitor & antique brand analysis.</li>
         <li><strong>Concept Ideation:</strong> Logo, typography, color palette concepts.</li>
         <li><strong>Wireframing:</strong> Layouts for cards, letterhead, social media posts.</li>
@@ -190,7 +190,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 
     <!-- Logos -->
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Logos</h2>
+      <h2 style="margin-top:0;color:#c8b49d">Logos</h2>
       <div class="grid">
         <img src="3-D.png" alt="3D Logo">
         <img src="2-D.png" alt="2D Logo">
@@ -202,7 +202,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 
     <!-- Business Cards -->
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Business Cards</h2>
+      <h2 style="margin-top:0;color:#c8b49d">Business Cards</h2>
       <div class="grid">
         <img src="Business_front.png" alt="Business Card Front">
         <img src="Business_back.png" alt="Business Card Back">
@@ -214,7 +214,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 
     <!-- Letterhead -->
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Letterhead</h2>
+      <h2 style="margin-top:0;color:#c8b49d">Letterhead</h2>
       <div class="grid">
         <img src="Letter_head.png" alt="Letterhead">
       </div>
@@ -225,7 +225,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 
     <!-- Social Media -->
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Social Media Mockups</h2>
+      <h2 style="margin-top:0;color:#c8b49d">Social Media Mockups</h2>
       <div class="grid">
         <img src="Instagram_Post.png" alt="Instagram Post">
         <img src="Instagram_Profile.png" alt="Instagram Profile">
@@ -237,7 +237,7 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 
     <!-- Banner -->
     <div class="card card-pad grid-banner" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Banner</h2>
+      <h2 style="margin-top:0;color:#c8b49d">Banner</h2>
       <img src="Banner.png" alt="Banner">
     </div>
 
@@ -249,8 +249,8 @@ input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 <section id="contact" class="section">
   <div class="container">
     <div class="card card-pad" data-aos="fade-up">
-      <h2 style="margin-top:0;color:var(--primary)">Contact</h2>
-      <p style="color:#ddd;margin-top:0">Interested in collaborating? Let’s connect.</p>
+      <h2 style="margin-top:0;color:#c8b49d">Contact</h2>
+      <p style="color:#ffffff;margin-top:0">Interested in collaborating? Let’s connect.</p>
       <form class="grid" onsubmit="event.preventDefault(); alert('Thanks! I’ll get back to you.');">
         <input name="name" placeholder="Name" required>
         <input name="email" type="email" placeholder="Email" required>
