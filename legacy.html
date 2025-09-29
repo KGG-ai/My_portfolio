@@ -9,7 +9,7 @@
 
 <style>
 :root{
-  --bg:#302d29;  /* antique warm dark */
+  --bg:#231b17;  /* antique warm dark */
   --card:#6d6760;
   --muted:#746d65;
   --text:#f7f5f2;
@@ -40,14 +40,14 @@ body{
 nav{
   position:sticky; top:0; z-index:50;
   backdrop-filter: blur(6px);
-  background: rgb(73, 69, 64);
+  background: rgb(76, 46, 36);
   border-bottom:1px solid rgba(88, 69, 69, 0.06);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;}
 .brand{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--primary);}
 .brand-dot{width:12px;height:12px;border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, #fff, var(--primary) 50%, var(--primary-2) 100%);
-  box-shadow:0 0 18px rgba(53, 48, 33, 0.716);
+  background: radial-gradient(circle at 30% 30%, #3b2f2f, var(--primary) 50%, var(--primary-2) 100%);
+  box-shadow:0 0 18px rgba(79, 70, 45, 0.853);
 }
 nav a{color:var(--text);text-decoration:none;font-size:.95rem;opacity:.85;}
 nav a:hover{opacity:1;color:var(--primary);}
@@ -67,22 +67,24 @@ nav a:hover{opacity:1;color:var(--primary);}
 .btn{
   display:inline-flex;align-items:center;gap:10px;
   padding:12px 20px;border-radius:10px;
-  color:#0a0a0a;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#070707;background:linear-gradient(135deg,var(--primary),var(--primary-2));
   font-weight:600;text-decoration:none;cursor:pointer;
   box-shadow:0 8px 24px rgba(75, 69, 49, 0.25);
-  transition:transform .2s ease, box-shadow .2s ease;
+  transition:transform .2s ease, box-shadow .2s ease,filter .2s ease;
+  border:3px solid  rgb(203, 195, 195);
 }
-.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(69, 58, 25, 0.759);}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(69, 62, 38, 0.759);}
+.btn:focus-visible{outline:3px solid var(--ring);outline-offset:4px}
 .btn.secondary{
-  background:#2b2318;color:var(--text);border:1px solid rgba(255,255,255,.08);
+  background:#3f3b35;color:var(--text);border:1px solid rgba(255,255,255,.08);border:3px solid  rgb(189, 180, 180);
 }
 .btn.secondary:hover{filter:brightness(1.1);}
 
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px;}
 
 .card{
-  background:linear-gradient(180deg, rgb(53, 46, 37), rgba(79, 74, 64, 0.784)) , var(--card);
-  border:1px solid rgba(255,255,255,.05);
+  background:linear-gradient(180deg, rgb(49, 38, 38), rgb(106, 98, 92)) , var(--card);
+  border: 2px solid rgba(105, 102, 102, 0.888);
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   transition: transform .25s ease, box-shadow .25s ease;
@@ -90,7 +92,7 @@ nav a:hover{opacity:1;color:var(--primary);}
 }
 .card:hover{
   transform: translateY(-5px);
-  box-shadow:0 14px 35px rgba(212,175,55,.35);
+  box-shadow:0 14px 35px rgb(99, 95, 78);
 }
 .card-pad{padding:24px;}
 
@@ -105,23 +107,24 @@ nav a:hover{opacity:1;color:var(--primary);}
   max-width:220px;
   height:auto;
   border-radius:12px;
-  border:1px solid rgba(255,255,255,.08);
+  border:3px solid rgba(165, 154, 154, 0.533);
   box-shadow:0 8px 20px rgba(0,0,0,.35);
   transition:transform .25s ease, box-shadow .25s ease;
+  background-color: #e5d8d86b;
 }
 .grid img:hover{
   transform:scale(1.05);
-  box-shadow:0 12px 30px rgba(212,175,55,.35);
+  box-shadow:0 12px 30px rgba(70, 56, 46, 0.87);
 }
 .grid-banner img{
   width:100%; max-width:900px; display:block; margin:0 auto;
-  box-shadow:0 12px 35px rgba(212,175,55,.25);
+  box-shadow:0 12px 35px rgba(64, 58, 38, 0.25);
 }
 
-footer{padding:40px 0;color:#aaa;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.9rem;}
+footer{padding:40px 0;color:#aaa;border-top:1px solid rgb(66, 48, 48);text-align:center;font-size:.9rem;}
 
 input,textarea{
-  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:#2b2318; color:var(--text); outline:none; margin-bottom:10px;
+  width:100%; padding:10px 12px; border-radius:10px; border: 2px solid rgba(63, 31, 31, 0.851); background:#3b2b1fa0; color:var(--text); outline:none; margin-bottom:10px;
 }
 input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
 </style>
