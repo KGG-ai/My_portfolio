@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Legacy Works</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0a0a;
+  --card:#141414;
+  --muted:#a0a0a0;
+  --text:#f2f2f2;
+  --primary:#d4af37;
+  --primary-2:#b22222;
+  --accent:#d4af37;
+  --ring: rgba(212,175,55,.45);
+  --radius:14px;
+  --shadow:0 10px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  background: radial-gradient(1000px 500px at 20% -10%, rgba(212,175,55,.12), rgba(0,0,0,0)),
+              radial-gradient(1200px 600px at 110% 20%, rgba(178,34,34,.12), rgba(0,0,0,0)),
+              var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+.container{max-width:1150px;margin:0 auto;padding:0 20px}
+.section{padding:70px 0}
+.kicker{letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-size:.8rem}
+
+nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter: blur(8px);
+  background: rgba(10,10,10,.7);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.brand{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--primary)}
+.brand-dot{width:12px;height:12px;border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, #fff, var(--primary) 50%, var(--primary-2) 100%);
+  box-shadow:0 0 18px rgba(212,175,55,.6);
+}
+nav a{color:var(--text);text-decoration:none;font-size:.95rem;opacity:.85}
+nav a:hover{opacity:1;color:var(--primary)}
+.nav-links{display:flex;gap:18px}
+
+.hero{padding:100px 0 80px;text-align:center}
+.hero h1{
+  font-family:"Space Grotesk",Inter,sans-serif;
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin:12px 0 16px;
+  font-size:clamp(2.2rem, 3.2vw + 1rem, 3.5rem);
+  color:var(--primary);
+}
+.hero p{color:#ccc;max-width:720px;margin:0 auto}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 20px;border-radius:10px;
+  color:#0a0a0a;background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  font-weight:600;text-decoration:none;cursor:pointer;
+  box-shadow:0 8px 24px rgba(212,175,55,.25);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(212,175,55,.35);}
+.btn.secondary{
+  background:#1c1c1c;color:var(--text);border:1px solid rgba(255,255,255,.08);
+}
+.btn.secondary:hover{filter:brightness(1.1)}
+
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:22px}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)) , var(--card);
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.card-pad{padding:24px}
+
+.grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+}
+.grid img{
+  width:100%;
+  max-width:220px;
+  height:auto;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.grid img:hover{
+  transform:scale(1.05);
+  box-shadow:0 12px 30px rgba(212,175,55,.35);
+}
+
+footer{padding:40px 0;color:#aaa;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:.9rem}
+
+input,textarea{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:#141414; color:var(--text); outline:none; margin-bottom:10px;
+}
+input:focus,textarea:focus{box-shadow:0 0 0 4px var(--ring);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      Legacy Works
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#deliverables">Deliverables</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="section hero">
+  <div class="container">
+    <p class="kicker" data-aos="fade-up">Brand Identity • Case Study</p>
+    <h1 id="type">Legacy Works</h1>
+    <p data-aos="fade-up" data-aos-delay="160">
+      A conceptual branding project for an established chain of antique furniture stores, 
+      blending timeless heritage with modern design principles.
+    </p>
+    <div class="hero-actions" data-aos="fade-up" data-aos-delay="240">
+      <a class="btn magnet" href="LegacyWorks.pdf" target="_blank">View Case Study (PDF)</a>
+      <a class="btn secondary" href="#deliverables">View Work</a>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">About the Project</h2>
+      <p style="color:#ddd">
+        Legacy Works was designed as a complete branding package to represent an antique furniture chain. 
+        The goal was to merge the elegance of traditional design with the sleekness of modern branding. 
+        Deliverables include logos, business cards, letterhead, banner, and social media kit.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="section">
+  <div class="container">
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">Process</h2>
+      <p style="color:#ddd">
+        The design process followed a structured approach to ensure timeless branding that resonates with Legacy Works’ audience:
+      </p>
+      <ul style="color:#ccc; margin-left:20px;">
+        <li>Research & Discovery: Studied the brand history, competitors, and target audience.</li>
+        <li>Concept Development: Created mood boards, sketches, and initial logo ideas.</li>
+        <li>Design Refinement: Finalized logo, color palette, typography, and visual elements.</li>
+        <li>Collateral Design: Designed business cards, letterhead, banners, and social media mockups.</li>
+        <li>Review & Feedback: Iterative feedback with stakeholders to refine and finalize all assets.</li>
+        <li>Delivery: Provided a complete branding package ready for implementation across all platforms.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="deliverables" class="section">
+  <div class="container">
+    <div class="card card-pad" data-aos="zoom-in">
+      <h2 style="margin-top:0;color:var(--primary)">Deliverables</h2>
+
+      <h3 style="color:#d4af37; margin-top:20px;">Logo</h3>
+      <div class="grid">
+        <img src="3-D.png" alt="3D Logo">
+        <img src="2-D.png" alt="2D Logo">
+      </div>
+
+      <h3 style="color:#d4af37; margin-top:20px;">Business Cards</h3>
+      <div class="grid">
+        <img src="Business_front.png" alt="Business Card Front">
+        <img src="Business_back.png" alt="Business Card Back">
+      </div>
+
+      <h3 style="color:#d4af37; margin-top:20px;">Letterhead Design</h3>
+      <div class="grid">
+        <img src="Letter_head.png" alt="Letterhead">
+      </div>
+
+      <h3 style="color:#d4af37; margin-top:20px;">Social Media Mockups</h3>
+      <div class="grid">
+        <img src="Instagram_post.png" alt="Instagram Post">
+        <img src="Instagram_profile.png" alt="Instagram Profile">
+      </div>
+
+      <h3 style="color:#d4af37; margin-top:20px;">Banner</h3>
+      <div class="grid">
+        <img src="Banner.png" alt="Banner">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="card card-pad" data-aos="fade-up">
+      <h2 style="margin-top:0;color:var(--primary)">Contact</h2>
+      <p style="color:#ddd;margin-top:0">Interested in collaborating? Let’s connect.</p>
+      <form class="grid" onsubmit="event.preventDefault(); alert('Thanks! I’ll get back to you.');">
+        <input name="name" placeholder="Name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <textarea name="msg" rows="4" placeholder="Message" required></textarea>
+        <button class="btn magnet" type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© 2025 Legacy Works | Antique Brand Identity Case Study</div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 900, once: true });
+
+// Typing effect
+(function typeHero(){
+  const el = document.getElementById('type');
+  const phrases = [
+    'Legacy Works • Brand Identity',
+    'Antique Furniture Chain',
+    'Timeless Meets Modern'
+  ];
+  let p=0,i=0,deleting=false;
+  function tick(){
+    const full = phrases[p];
+    i += deleting ? -1 : 1;
+    el.textContent = full.slice(0, i);
+    if(!deleting && i === full.length){ setTimeout(()=> deleting=true, 1200); }
+    else if(deleting && i === 0){ deleting=false; p=(p+1)%phrases.length; }
+    const speed = deleting ? 40 : 80;
+    setTimeout(tick, speed);
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
