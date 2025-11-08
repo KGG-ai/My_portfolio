@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lunora — Spiritual AI Mobile Experience</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-1: #1a1325;   /* deep lavender base */
+    --bg-2: #29183a;   /* deeper tone */
+    --lav: #bfa0e6;    /* soft lavender */
+    --gold: #d4af37;   /* gold accent */
+    --gold-soft: rgba(212,175,55,0.14);
+    --card: rgba(255,255,255,0.03);
+    --glass: rgba(255,255,255,0.06);
+    --radius: 18px;
+    --text: #efe9f6;
+    --muted: #cfc2e8;
+    --transition: 400ms cubic-bezier(.2,.9,.3,1);
+  }
+
+  /* Reset */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+    color:var(--text);
+    background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* Horizontal shimmer overlay — luxurious & subtle */
+  .shimmer {
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    background:
+      linear-gradient(90deg,
+        rgba(191,160,230,0.06) 0%,
+        rgba(212,175,55,0.07) 25%,
+        rgba(191,160,230,0.06) 50%,
+        rgba(212,175,55,0.05) 75%,
+        rgba(191,160,230,0.05) 100%);
+    background-size: 300% 100%;
+    opacity:0.55;
+    mix-blend-mode: screen;
+    animation: shimmerMove 20s linear infinite;
+    filter: blur(14px) saturate(1.05);
+  }
+  @keyframes shimmerMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+
+  /* Gentle star speck (very subtle) */
+  .grain {
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,255,255,0.02) 0.5px, transparent 0.6px),
+      radial-gradient(circle at 70% 40%, rgba(255,255,255,0.015) 0.6px, transparent 0.7px);
+    opacity:0.22; filter: blur(.6px);
+  }
+
+  /* Layout container */
+  .container{max-width:1100px;margin:0 auto;padding:0 20px;position:relative;z-index:3}
+
+  /* Nav */
+  nav{
+    position:sticky; top:18px; z-index:50; margin:0 auto; backdrop-filter: blur(8px);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.04); border-radius:12px; width:calc(100% - 40px);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+  .brand{font-family:"Playfair Display",serif;color:var(--gold);font-weight:700;letter-spacing:1px;font-size:20px}
+  .tag{font-size:12px;color:var(--muted);margin-left:8px}
+  .nav-links{display:flex;gap:14px}
+  .nav-links a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:8px;opacity:.9}
+  .nav-links a:hover{background:var(--glass);color:var(--gold);transform:translateY(-2px)}
+
+  /* Sections */
+  section{padding:84px 0;position:relative;z-index:2}
+  .hero{display:flex;flex-direction:column;align-items:flex-start;gap:18px;padding-top:110px}
+  /* left aligned hero (you requested left earlier) */
+  .hero-inner{display:flex;gap:18px;align-items:flex-start;width:100%}
+  .hero-col{max-width:640px}
+  .kicker{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+  h1{font-family:"Playfair Display",serif;font-size:clamp(2rem,3.6vw,3.2rem);line-height:1.02;color:var(--lav);margin:8px 0}
+  p.lead{color:var(--muted);font-size:1.03rem;max-width:680px}
+
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:999px;border:1px solid rgba(255,255,255,0.06);
+    cursor:pointer;font-weight:600;background:linear-gradient(90deg,var(--lav),var(--gold));color:#221822;box-shadow:0 10px 30px rgba(212,175,55,0.06);
+    transition: transform var(--transition), box-shadow var(--transition), filter var(--transition);
+  }
+  .btn.secondary{background:transparent;color:var(--lav);border:1px solid rgba(191,160,230,0.12)}
+  .btn:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(212,175,55,0.14);filter:brightness(1.02)}
+
+  /* small watch prototype link style */
+  .watch-link{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+
+  /* Features */
+  .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+  .feature{
+    background:var(--card);padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);
+    box-shadow:0 8px 28px rgba(0,0,0,0.35);transition:transform .45s cubic-bezier(.2,.9,.3,1),box-shadow .45s;
+  }
+  .feature:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(185,151,245,0.12)}
+  .feature h4{color:var(--gold);margin-bottom:8px}
+  .feature p{color:var(--muted);font-size:0.95rem}
+
+  /* Vision */
+  .vision{display:flex;gap:20px;align-items:center}
+  .vision-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 10px 30px rgba(0,0,0,0.36)}
+  .vision p{color:var(--muted)}
+
+  /* Screens */
+  .screens{display:flex;gap:80px;flex-wrap:wrap;justify-content:flex-start;margin-top:18px}
+  .mock{
+    width:220px;height:480px;border-radius:28px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;transition:transform .5s cubic-bezier(.2,.9,.3,1), box-shadow .5s;
+  }
+  .mock img{width:100%;height:100%;object-fit:cover;display:block}
+  .mock::after{
+    content:"";position:absolute;inset:0;border-radius:28px;padding:2px;
+    background:linear-gradient(90deg, rgba(191,160,230,0.04), rgba(212,175,55,0.06), rgba(191,160,230,0.03));
+    opacity:0;transition:opacity .45s;
+  }
+  .mock:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 36px 100px rgba(185,151,245,0.22)}
+  .mock:hover::after{opacity:1}
+
+  /* Contact / Footer */
+  .contact-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:22px;border-radius:14px;border:1px solid rgba(255,255,255,0.04)}
+  footer{padding:38px 0;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.03);margin-top:30px}
+
+  /* Layout helpers */
+  .spaced{margin-top:18px}
+  .muted{color:var(--muted)}
+
+  /* Scroll reveal initial states */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 900ms cubic-bezier(.2,.9,.3,1), transform 900ms cubic-bezier(.2,.9,.3,1)}
+
+  /* Responsive */
+  @media (max-width:980px){
+    .features-grid{grid-template-columns:repeat(2,1fr)}
+    .hero{padding-top:60px}
+    .hero-col{max-width:100%}
+  }
+  @media (max-width:640px){
+    .features-grid{grid-template-columns:1fr}
+    .nav-inner{padding:12px}
+    .mock{width:180px;height:380px}
+  }
+</style>
+</head>
+<body>
+
+<!-- decorative shimmer + grain -->
+<div class="shimmer" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <div style="display:flex;align-items:center">
+      <div class="brand">Lunora</div>
+      <div class="tag" style="margin-left:8px"></div>
+    </div>
+
+    <div class="nav-links" role="navigation" aria-label="Main">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#vision">Vision</a>
+      <a href="#screens">Screens</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="reveal">
+  <div class="container hero-inner">
+    <div class="hero-col">
+      <div class="kicker reveal">UI / Product Design • Spiritual AI</div>
+      <h1 class="reveal">Lunora — Spiritual AI Mobile Experience</h1>
+      <p class="lead reveal">A gentle, intuitive mobile experience that blends astrology, mindfulness, and warm AI guidance — designed to feel calm, regal, and deeply human.</p>
+
+      <div class="hero-actions spaced">
+        <button class="btn reveal" id="watchBtn" aria-label="Watch prototype (opens new tab)">Watch Prototype</button>
+        <a class="btn secondary reveal" href="#screens">View Screens</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="reveal">
+  <div class="container">
+    <div class="kicker reveal">Key highlights</div>
+    <h2 class="reveal">Features</h2>
+
+    <div class="features-grid">
+      <div class="feature reveal">
+        <h4>AI-Guided Insights</h4>
+        <p>Personalized suggestions and reflective prompts that feel human and supportive — powered by lightweight AI reasoning.</p>
+      </div>
+
+      <div class="feature reveal">
+        <h4>Intuitive Journaling</h4>
+        <p>Emotion-first entry flows with visual mood timelines and gentle nudges to help users reflect and track progress.</p>
+      </div>
+
+      <div class="feature reveal">
+        <h4>Lavender & Gold Aesthetics</h4>
+        <p>A calming visual system using soft lavenders and gold accents to evoke trust, warmth, and luxury.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section id="vision" class="reveal">
+  <div class="container">
+    <h2 class="reveal">Vision</h2>
+
+    <div class="vision spaced">
+      <div class="vision-card reveal">
+        <p class="muted">Lunora aims to make personal wellbeing rituals approachable and beautiful. We design with empathy so technology becomes a companion, not a chore.</p>
+      </div>
+
+      <div class="vision-card reveal">
+        <p class="muted">Our long-term goal is to blend gentle AI with accessibility-first design so users from diverse backgrounds feel seen, supported, and calm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENS -->
+<section id="screens" class="reveal">
+  <div class="container">
+    <h2 class="reveal">Experience Lunora</h2>
+    <p class="muted reveal">Tap any screen to preview.</p>
+
+    <div class="screens spaced">
+      <!-- Replace the src values with your real images -->
+      <a class="mock reveal" href="https://ik.imagekit.io/rxhnkbo5p/Recording%202025-11-06%20125521.mp4?updatedAt=1762441600992" target="_blank" aria-label="Open screen 1 in new tab">
+        <img src="iPhone 13 & 14 - 12.png" alt="Lunora screen 1">
+      </a>
+
+      <a class="mock reveal" href="https://ik.imagekit.io/rxhnkbo5p/Recording%202025-11-06%20125521.mp4?updatedAt=1762441600992" target="_blank" aria-label="Open screen 2 in new tab">
+        <img src="iPhone 13 & 14 - 13.png" alt="Lunora screen 2">
+      </a>
+
+      <a class="mock reveal" href="https://ik.imagekit.io/rxhnkbo5p/Recording%202025-11-06%20125521.mp4?updatedAt=1762441600992" target="_blank" aria-label="Open screen 3 in new tab">
+        <img src="iPhone 13 & 14 - 15.png" alt="Lunora screen 3">
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+  <div class="container">
+    <h2 class="reveal">Contact</h2>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:16px">
+      <div class="contact-card reveal" style="flex:1;min-width:260px">
+        <strong style="color:var(--gold)">Email</strong>
+        <p class="muted">komalr635122@gmail.com</p>
+        <div style="height:8px"></div>
+        <strong style="color:var(--gold)">LinkedIn</strong>
+        <p class="muted"><a href="https://www.linkedin.com/in/komal-rajput-4335892a2/" target="_blank" style="color:var(--muted);text-decoration:none">komal-rajput</a></p>
+      </div>
+
+      <div class="contact-card reveal" style="flex:1;min-width:260px">
+        <form id="contactForm" onsubmit="event.preventDefault(); handleContact(this);" aria-label="Contact form">
+          <label class="muted" style="font-size:13px">Name</label>
+          <input name="name" type="text" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);margin-top:6px"/>
+
+          <label class="muted" style="font-size:13px;margin-top:8px">Email</label>
+          <input name="email" type="email" required style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);margin-top:6px"/>
+
+          <label class="muted" style="font-size:13px;margin-top:8px">Message</label>
+          <textarea name="message" rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text);margin-top:6px"></textarea>
+
+          <div style="margin-top:12px">
+            <button type="submit" class="btn" aria-label="Send message">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">Crafted with cosmic intuition — Komal Rajput • Lunora 2025</div>
+</footer>
+
+<!-- JS: interactions, scroll reveal, watch button -->
+<script>
+  // Watch Prototype button opens link in new tab
+  document.getElementById('watchBtn').addEventListener('click', () => {
+    const url = 'https://ik.imagekit.io/rxhnkbo5p/Recording%202025-11-06%20125521.mp4?updatedAt=1762441600992';
+    window.open(url, '_blank', 'noopener,noreferrer');
+  });
+
+  // Smooth reveal on scroll with IntersectionObserver
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('fade-in');
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        // add 'fade-up' by applying a CSS class for consistent timing
+        entry.target.classList.add('fade-up');
+        // once revealed, unobserve for perf
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.18});
+
+  revealEls.forEach(el => {
+    // small stagger using data-delay optional attribute (we'll set a default)
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(28px)';
+    io.observe(el);
+  });
+
+  // Simple contact handler — opens mailto
+  function handleContact(form){
+    const name = form.name.value.trim() || 'Someone';
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    alert('Thanks! I will get back to you ✨');
+
+    const subject = encodeURIComponent('Lunora Contact from ' + name);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    window.location.href = `mailto:komalr635122@gmail.com?subject=${subject}&body=${body}`;
+    form.reset();
+  }
+
+  // Add small keyboard accessibility: enter focus to open prototype when focused on button and Enter pressed
+  document.getElementById('watchBtn').addEventListener('keyup', function(e){
+    if(e.key === 'Enter' || e.key === ' '){
+      this.click();
+    }
+  });
+</script>
+</body>
+</html>
